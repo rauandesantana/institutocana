@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:institutocana/componentes/app_bar/app_bar_button.dart';
 import 'package:institutocana/componentes/app_bar/app_bar_custom.dart';
+import 'package:institutocana/componentes/text_title/text_title.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -37,10 +38,14 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Text("data")
-          ],
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: Column(
+            children: <Widget>[
+              TextTitle(context: context, title: "Novidades"),
+
+            ],
+          ),
         ),
       ),
     );

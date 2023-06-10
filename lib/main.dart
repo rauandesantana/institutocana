@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
           backgroundColor: Colors.blueGrey.shade50,
           primarySwatch: Colors.green,
-          accentColor: Colors.green.shade300,
+          accentColor: Colors.green.shade900,
           cardColor: Colors.green.shade300,
           errorColor: Colors.red,
         ),
