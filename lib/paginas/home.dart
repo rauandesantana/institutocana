@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:institutocana/componentes/app_bar/app_bar_button.dart';
 import 'package:institutocana/componentes/app_bar/app_bar_custom.dart';
+import 'package:institutocana/componentes/banner_home/banner_home.dart';
+import 'package:institutocana/componentes/slider_banner/slider_banner.dart';
 import 'package:institutocana/componentes/text_title/text_title.dart';
 
 class HomePage extends StatefulWidget {
@@ -38,12 +40,21 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(10),
+        child: SizedBox(
+          width: largura,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              TextTitle(context: context, title: "Novidades"),
-
+              const BannerHome(),
+              Padding(
+                padding: const EdgeInsets.only(left: 25),
+                child: TextTitle(context: context, title: "Cursos"),
+              ),
+              SliderBanner(
+                itemBuilder: (context, index) {
+                  return Text(index.toString());
+                },
+              ),
             ],
           ),
         ),
