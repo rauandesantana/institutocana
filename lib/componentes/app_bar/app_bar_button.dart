@@ -28,16 +28,16 @@ class AppBarButton extends StatelessWidget {
           Theme.of(context).colorScheme.primary,
         ),
         side: MaterialStatePropertyAll(
-          BorderSide(color: Colors.green.shade900),
+          BorderSide(color: Theme.of(context).colorScheme.secondary),
         ),
       ),
-      icon: Icon(icon, color: Colors.green.shade900),
+      icon: Icon(icon, color: Theme.of(context).colorScheme.secondary),
       label: Text(
         title,
         style: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
-          color: Colors.green.shade900,
+          color: Theme.of(context).colorScheme.secondary,
         ),
       ),
     );
@@ -49,7 +49,7 @@ class AppBarButton extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(5,0,5,7),
           child: IconButton(
             onPressed: (disable == true) ? null : onPressed,
-            icon: Icon(icon, color: Colors.green.shade900),
+            icon: Icon(icon, color: Theme.of(context).colorScheme.secondary),
           ),
         ),
         Positioned(
@@ -59,7 +59,7 @@ class AppBarButton extends StatelessWidget {
             style: TextStyle(
               fontSize: 10,
               fontWeight: FontWeight.bold,
-              color: Colors.green.shade900,
+              color: Theme.of(context).colorScheme.secondary,
             ),
           ),
         ),
