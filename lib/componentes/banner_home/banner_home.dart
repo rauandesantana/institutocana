@@ -14,6 +14,7 @@ class BannerHome extends StatelessWidget {
         ),
         Positioned(
           top: 0,
+          left: 15,
           child: Container(
             padding: const EdgeInsets.symmetric(
               horizontal: 8,
