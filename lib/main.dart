@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:institutocana/paginas/home.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
