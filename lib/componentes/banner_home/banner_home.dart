@@ -22,12 +22,16 @@ class BannerHome extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               color: Colors.green.shade900,
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(5),
+                bottomRight: Radius.circular(5),
+              ),
             ),
             child: Text(
               "para a Família",
               style: TextStyle(
-                color: Theme.of(context).colorScheme.surface,
-              ),
+                  color: Theme.of(context).colorScheme.surface,
+                  fontWeight: FontWeight.w500),
             ),
           ),
         ),
