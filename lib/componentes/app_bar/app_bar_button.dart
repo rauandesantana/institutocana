@@ -20,7 +20,6 @@ class AppBarButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final buttonExtended = OutlinedButton.icon(
       onPressed: (disable == true) ? null : onPressed,
       style: ButtonStyle(
@@ -42,31 +41,29 @@ class AppBarButton extends StatelessWidget {
       ),
     );
 
-    final buttonSmall = Stack(
-      alignment: AlignmentDirectional.center,
-      children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(5,0,5,7),
-          child: IconButton(
-            onPressed: (disable == true) ? null : onPressed,
-            icon: Icon(icon, color: Theme.of(context).colorScheme.secondary),
-          ),
-        ),
-        Positioned(
-          bottom: 5,
-          child: Text(
-            title,
-            style: TextStyle(
-              fontSize: 10,
-              fontWeight: FontWeight.bold,
-              color: Theme.of(context).colorScheme.secondary,
+    final buttonSmall = TextButton(
+      onPressed: (disable == true) ? null : onPressed,
+      child: Stack(
+        alignment: AlignmentDirectional.center,
+        children: [
+          Container(
+            padding: const EdgeInsets.fromLTRB(5, 20, 5, 0),
+            child: Text(
+              title,
+              style: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.secondary,
+              ),
             ),
           ),
-        ),
-      ],
+          Positioned(
+            top: 0,
+            child: Icon(icon, color: Theme.of(context).colorScheme.secondary),
+          ),
+        ],
+      ),
     );
-
-
 
     return (smallMode == true) ? buttonSmall : buttonExtended;
   }
