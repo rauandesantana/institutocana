@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BannerHome extends StatelessWidget {
+  final double height = 350;
   const BannerHome({super.key});
 
   @override
@@ -9,7 +10,7 @@ class BannerHome extends StatelessWidget {
       children: <Widget>[
         Image.asset(
           "assets/imagens/banner.png",
-          height: 350,
+          height: height,
           fit: BoxFit.fitHeight,
         ),
         Positioned(
