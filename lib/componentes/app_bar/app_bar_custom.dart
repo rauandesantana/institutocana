@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:institutocana/componentes/app_logo/app_logo.dart';
 
 class AppBarCustom extends AppBar {
   AppBarCustom({
@@ -14,43 +15,7 @@ class AppBarCustom extends AppBar {
                 "/",
                 (context) => false,
               ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Image.asset(
-                    "assets/imagens/logo.png",
-                    color: Colors.green.shade900,
-                    width: 35,
-                    height: 35,
-                  ),
-                  const Stack(
-                    alignment: AlignmentDirectional.centerStart,
-                    children: <Widget>[
-                      Positioned(
-                        top: 0,
-                        left: 2,
-                        child: Text(
-                          "Instituto",
-                          style: TextStyle(
-                            fontSize: 10,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 8),
-                        child: Text(
-                          "CANÁ",
-                          style: TextStyle(
-                            fontFamily: "Kaczun Oldstyle",
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+              child: const AppLogo(scale: 0.35),
             ),
           ),
           actions: [

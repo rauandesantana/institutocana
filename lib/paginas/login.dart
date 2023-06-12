@@ -12,7 +12,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-
     void signUp() => Navigator.of(context).popAndPushNamed("/cadastrar");
 
     return Scaffold(
@@ -27,7 +26,21 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ],
       ),
-      body: Container(),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+
+          return SingleChildScrollView(
+            child: SizedBox(
+              width: constraints.maxWidth,
+              child: Column(
+                children: <Widget>[
+
+                ],
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }

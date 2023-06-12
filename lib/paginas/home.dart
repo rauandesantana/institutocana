@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   bool get isMobile => (!kIsWeb) ? Platform.isAndroid || Platform.isIOS : false;
   ScrollController scrollView = ScrollController();
   ScrollController sliderBanner = ScrollController();
-  bool toggleScroll = false;
+  bool? toggleScroll = false;
 
   @override
   void initState() {
@@ -28,13 +28,22 @@ class _HomePageState extends State<HomePage> {
       if (!isMobile) {
         final scrollMax = scrollView.position.maxScrollExtent;
         final scrollCurrent = scrollView.position.pixels;
-        if (scrollCurrent >= scrollMax) setState(() => toggleScroll = true);
+        if (scrollCurrent < scrollMax) {
+          setState(() => toggleScroll = false);
+        } else if (scrollCurrent >= scrollMax) {
+          setState(() => toggleScroll = null);
+        }
       }
     });
     sliderBanner.addListener(() {
       if (!isMobile) {
         final scrollCurrent = sliderBanner.position.pixels;
-        if (scrollCurrent == 0.0) setState(() => toggleScroll = false);
+        if (scrollCurrent == 0.0) {
+          setState(() => toggleScroll = null);
+        } else if (scrollCurrent > 0.0) {
+          setState(() => toggleScroll = true);
+        }
+
       }
     });
     super.initState();
@@ -57,8 +66,8 @@ class _HomePageState extends State<HomePage> {
     }
 
     ScrollPhysics? scrollPhysics({bool? invert}) {
-      if (isMobile) return null;
-      bool toggle = (invert == true) ? !toggleScroll : toggleScroll;
+      if (isMobile || toggleScroll == null) return null;
+      bool toggle = (invert == true) ? !toggleScroll! : toggleScroll!;
       return (toggle) ? const NeverScrollableScrollPhysics() : null;
     }
 
@@ -110,30 +119,33 @@ class _HomePageState extends State<HomePage> {
           return SingleChildScrollView(
             controller: scrollView,
             physics: scrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 25),
-                  child: BannerHome(),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 25),
-                  child: TextTitle(context: context, title: "Cursos"),
-                ),
-                SliderBanner(
-                  sliderSize: size,
-                  controller: sliderBanner,
-                  physics: scrollPhysics(invert: true),
-                  gridMode: true,
-                  itemSize: const Size(400, 200),
-                  itemMargin: const EdgeInsets.all(5),
-                  itemCount: 300,
-                  itemBuilder: (context, index, size) {
-                    return itemCursos(context, index, size, {});
-                  },
-                ),
-              ],
+            child: SizedBox(
+              width: constraints.maxWidth,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 25),
+                    child: BannerHome(),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25),
+                    child: TextTitle(context: context, title: "Cursos"),
+                  ),
+                  SliderBanner(
+                    sliderSize: size,
+                    controller: sliderBanner,
+                    physics: scrollPhysics(invert: true),
+                    gridMode: true,
+                    itemSize: const Size(400, 200),
+                    itemMargin: const EdgeInsets.all(5),
+                    itemCount: 300,
+                    itemBuilder: (context, index, size) {
+                      return itemCursos(context, index, size, {});
+                    },
+                  ),
+                ],
+              ),
             ),
           );
         },

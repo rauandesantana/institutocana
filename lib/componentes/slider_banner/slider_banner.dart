@@ -69,9 +69,9 @@ class SliderBanner extends StatelessWidget {
       ),
     );
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[(gridMode == true && !isMobile) ? grid : slide],
+    return ScrollConfiguration(
+      behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+      child: (gridMode == true && !isMobile) ? grid : slide,
     );
   }
 }

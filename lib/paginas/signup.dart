@@ -28,7 +28,21 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
         ],
       ),
-      body: Container(),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+
+          return SingleChildScrollView(
+            child: SizedBox(
+              width: constraints.maxWidth,
+              child: Column(
+                children: <Widget>[
+
+                ],
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
