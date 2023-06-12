@@ -49,7 +49,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final smallMode = MediaQuery.of(context).size.width < 450;
+
+    void login() => Navigator.of(context).pushNamed("/entrar");
+    void signUp() => Navigator.of(context).pushNamed("/cadastrar");
+    void accessItem(int index) {
+
+    }
 
     ScrollPhysics? scrollPhysics({bool? invert}) {
       if (isMobile) return null;
@@ -75,9 +80,7 @@ class _HomePageState extends State<HomePage> {
             " In libero ipsum, blandit cursus neque quis, varius malesuada nunc.",
         date: "10/06/2023",
         local: "Instituto Caná para Família",
-        onTap: () {
-          print(index);
-        },
+        onTap: () => accessItem(index),
       );
     }
 
@@ -87,18 +90,16 @@ class _HomePageState extends State<HomePage> {
         actions: <Widget>[
           AppBarButton(
             context: context,
-            smallMode: smallMode,
             icon: Icons.login_outlined,
             title: "Entrar",
-            onPressed: () {},
+            onPressed: login,
           ),
           const Padding(padding: EdgeInsets.only(right: 10)),
           AppBarButton(
             context: context,
-            smallMode: smallMode,
             icon: Icons.person_add_rounded,
             title: "Cadastrar",
-            onPressed: () {},
+            onPressed: signUp,
           ),
         ],
       ),

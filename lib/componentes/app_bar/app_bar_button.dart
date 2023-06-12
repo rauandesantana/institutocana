@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppBarButton extends StatelessWidget {
   final BuildContext context;
   final bool? disable;
-  final bool? smallMode;
+  final double? smallModeWidth;
   final String title;
   final IconData icon;
   final VoidCallback onPressed;
@@ -12,7 +12,7 @@ class AppBarButton extends StatelessWidget {
     super.key,
     required this.context,
     this.disable,
-    this.smallMode,
+    this.smallModeWidth,
     required this.title,
     required this.icon,
     required this.onPressed,
@@ -20,6 +20,9 @@ class AppBarButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final smallMode = width < (smallModeWidth ?? 550);
+
     final buttonExtended = OutlinedButton.icon(
       onPressed: (disable == true) ? null : onPressed,
       style: ButtonStyle(
@@ -65,6 +68,6 @@ class AppBarButton extends StatelessWidget {
       ),
     );
 
-    return (smallMode == true) ? buttonSmall : buttonExtended;
+    return (smallMode) ? buttonSmall : buttonExtended;
   }
 }
