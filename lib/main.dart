@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:institutocana/paginas/home.dart';
+import 'package:institutocana/paginas/login.dart';
+import 'package:institutocana/paginas/signup.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +21,8 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/": (context) => const HomePage(),
+        "/entrar": (context) => const LoginPage(),
+        "/cadastrar": (context) => const SignUpPage(),
       },
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(
